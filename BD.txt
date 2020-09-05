@@ -1,0 +1,36 @@
+drop database dim_dim_facil;
+create database dim_dim_facil;
+
+use dim_dim_facil;
+
+create table contacorrente
+(
+  id_conta int not null auto_increment,
+  nome_cli text not null,
+  num_contacorrente text not null,
+  cpf_cli text not null,
+  saldo_contacorrente text not null,
+  
+  primary key(id_conta)
+);
+
+INSERT INTO contacorrente VALUES ('1', 'WgWAiGEDyoFEpdfFbdtuPftT3yNAi4Ox3SEFaZvO0jY=', 'HCbC/bUgYZERtes43jU4FQ==', 'I004zsgWLCa/Itx4cXb8bQ==', 'hr1xxyIpDzTuMTwUaGkwnA==');
+INSERT INTO contacorrente VALUES ('2', 'dY/Lj/C/vXksCIplYhq+Iupdc258RjoLGcNAkjB68Sk=', 'bzK7ZRpI05GTGbQW2e0FAA==', 'K44CInaYokLLMx5loPgY0w==', 'skgZ+6Vk3+nF+advuQwMig==');
+INSERT INTO contacorrente VALUES ('3', 'jWQieiypx4id3sd/ukoD75qZakjrw6UyYVllMrh8JBk=', 'lm8H/v7Y7Ux/cvKdOFvCVQ==', 'q9ZahjOb+bKpfSu6W6OJWQ==', '1m+tZFF4PYy1FdGdVBVlLQ==');
+
+
+create table transacoes
+(
+  id_transacao int not null auto_increment,
+  id_conta int not null,
+  tipo_transacao text not null,
+  valor_transacao text not null,
+  
+  primary key(id_transacao),
+  foreign key(id_conta) references contacorrente(id_conta)
+);
+
+INSERT INTO transacoes VALUES ('1', '1', '/ck30qEUkuTuk1xKhkgsdg==', 'hr49pK8XdaaJuy59bbtL1Q==');
+INSERT INTO transacoes VALUES ('2', '1', 'zkcCE6DbMJM9IbL1WrZitA==', 'Ic8YJxrKHkuYQuMDvPo0xA==');
+INSERT INTO transacoes VALUES ('3', '2', '/ck30qEUkuTuk1xKhkgsdg==', 'jflv9XGrqf9p7RebaL5mzw==');
+INSERT INTO transacoes VALUES ('4', '3', 'zkcCE6DbMJM9IbL1WrZitA==', 'eOcapQQ/9lxxGX5PYdrmvw==');
